@@ -1,0 +1,13 @@
+.list-item {
+    margin-top: 1rem;
+}
+
+.wide-button{
+    width: 100%;
+}
+
+.large-list{
+    height: 70vh;
+    overflow-y: scroll;
+    margin: 1rem
+}

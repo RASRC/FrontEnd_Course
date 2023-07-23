@@ -1,25 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import { BuildingViewer } from "./components/building/building-viewer";
+import { MapViewer } from "./components/map/map-viewer";
+import { LoginForm } from "./components/db/login-form";
+import { ContextProvider } from "./middleware/context-provider";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ContextProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<LoginForm />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/building" element={<BuildingViewer />} />
+          <Route path="/map" element={<MapViewer />} />
+        </Routes>
+      </Router>
+    </ContextProvider>
   );
 }
 
