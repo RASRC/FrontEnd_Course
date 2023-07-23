@@ -8,7 +8,7 @@ export const ModelListMenu: FC = () => {
   const [{ building, user }, dispatch] = useAppContext();
 
   if (!building || !user) {
-    throw new Error("Estas como loquita! Sapbeee");
+    throw new Error("No existe el modelo");
   }
 
   const onUploadModel = () => {

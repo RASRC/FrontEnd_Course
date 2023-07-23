@@ -38,7 +38,7 @@ export class BuildingDatabase {
     const url = await getDownloadURL(fileRef);
     await this.cacheModel(id, url);
     console.log(
-      "Extracción del modelo desde Firebase y almacenado en cache. El peluca sapbeee!"
+      "Extracción del modelo desde Firebase y almacenado en cache."
     );
     return url;
   }
@@ -46,7 +46,7 @@ export class BuildingDatabase {
   private async getModelFromLocalCache(id: string) {
     const found = await this.db.models.where("id").equals(id).toArray();
     const file = found[0].file;
-    console.log("Estas como loquita! El modelo viene del caché");
+    console.log("El modelo viene del caché");
     return URL.createObjectURL(file);
   }
 
