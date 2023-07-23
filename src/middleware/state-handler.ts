@@ -1,4 +1,3 @@
-import { Floorplan } from './../types';
 import { State } from "./state";
 import { Action } from "./actions";
 

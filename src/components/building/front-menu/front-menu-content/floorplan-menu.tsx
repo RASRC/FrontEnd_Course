@@ -8,17 +8,10 @@ export const FloorplanMenu: FC = () => {
   const [state, dispatch] = useAppContext();
   const onFloorplanSelected = (active: boolean, floorplan?: Floorplan) => {
     dispatch({ type: "TOGGLE_FLOORPLAN", payload: { active, floorplan } });
+    console.log(floorplan);
   };
   return (
     <div className="large-list">
-      <div key="Exit" className="list-item">
-        <Button
-          onClick={() => onFloorplanSelected(false)}
-          className="wide-button"
-        >
-          Volver
-        </Button>
-      </div>
       {state.floorplans.map((plan) => {
         return (
           <div key={plan.name} className="list-item">
@@ -31,6 +24,14 @@ export const FloorplanMenu: FC = () => {
           </div>
         );
       })}
+      <div key="Exit" className="list-item">
+        <Button
+          onClick={() => onFloorplanSelected(false)}
+          className="wide-button"
+        >
+          Volver
+        </Button>
+      </div>
     </div>
   );
 };

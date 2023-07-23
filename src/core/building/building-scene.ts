@@ -323,10 +323,9 @@ export class BuildingScene {
             ortho: true,
             normal: new THREE.Vector3(0,-1,0),
             point: new THREE.Vector3(0,elevation,0)
-          })
-
-          this.events.trigger({type:"UPDATE_FLOORPLANS",payload: this.floorplans});
+          }) 
         }
+        this.events.trigger({type:"UPDATE_FLOORPLANS",payload: this.floorplans});
       }
 
       for (let i = 0; i < fileNames.length; i++) {
