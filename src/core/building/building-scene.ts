@@ -317,7 +317,7 @@ export class BuildingScene {
           const planInfo = {name: levelProps.Name.value,id: levelProps.expressID};
           this.floorplans.push(planInfo);
           
-          const elevation = levelProps.SceneHeight + levelOffset;
+          const elevation = levelProps.Elevation.value + levelOffset;
           await floorNav.create({
             id: levelProps.expressID,
             ortho: true,
