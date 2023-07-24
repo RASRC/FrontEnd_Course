@@ -8,7 +8,6 @@ export const FloorplanMenu: FC = () => {
   const [state, dispatch] = useAppContext();
   const onFloorplanSelected = (active: boolean, floorplan?: Floorplan) => {
     dispatch({ type: "TOGGLE_FLOORPLAN", payload: { active, floorplan } });
-    console.log(floorplan);
   };
   return (
     <div className="large-list">

@@ -16,7 +16,7 @@ export class BuildingScene {
   private events: Events;
   private floorplans: Floorplan[] = [];
   
-  private whiteMaterial = new THREE.MeshBasicMaterial({color:"white"});
+  private whiteMaterial = new THREE.MeshBasicMaterial({color:"white",side:2});
 
   get container() {
     const domElement = this.components.renderer.get().domElement;
@@ -312,20 +312,30 @@ export class BuildingScene {
       const levelOffset = 1.5;
       const floorNav = this.getFloorNav();
 
-      if(this.floorplans.length===0){
-        for(const levelProps of levelsProperties){
-          const planInfo = {name: levelProps.Name.value,id: levelProps.expressID};
-          this.floorplans.push(planInfo);
-          
-          const elevation = levelProps.Elevation.value + levelOffset;
-          await floorNav.create({
-            id: levelProps.expressID,
-            ortho: true,
-            normal: new THREE.Vector3(0,-1,0),
-            point: new THREE.Vector3(0,elevation,0)
-          }) 
+      if (this.floorplans.length === 0) {
+        for (const levelProps of levelsProperties) {
+          if (levelProps.Name.value !== "[Undefined Storey]") {
+            const planInfo = {
+              name: levelProps.Name.value,
+              id: levelProps.expressID,
+            };
+            this.floorplans.push(planInfo);
+
+            const elevation = levelProps.Elevation.value + levelOffset;
+            //const elevation = levelProps.SceneHeight + levelOffset;
+
+            await floorNav.create({
+              id: levelProps.expressID,
+              ortho: true,
+              normal: new THREE.Vector3(0, -1, 0),
+              point: new THREE.Vector3(0, elevation, 0),
+            });
+          }
         }
-        this.events.trigger({type:"UPDATE_FLOORPLANS",payload: this.floorplans});
+        this.events.trigger({
+          type: "UPDATE_FLOORPLANS",
+          payload: this.floorplans,
+        });
       }
 
       for (let i = 0; i < fileNames.length; i++) {

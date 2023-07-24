@@ -7,7 +7,7 @@
 }
 
 .large-list{
-    height: 70vh;
-    overflow-y: scroll;
+    height: 65vh;
+    overflow-y: auto;
     margin: 1rem
 }
